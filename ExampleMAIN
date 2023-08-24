@@ -1,0 +1,284 @@
+//THIS IS AN EXAMPLE FOR CIDM3312
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+// You need to add another using directive for LINQ. Put it here. Don't forget!
+
+namespace Homework3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Prep Work: Copy and Paste list of data
+            List<Game> games = new List<Game> {
+                new Game {Name = "Counter-Strike: Global Offensive", Developer = "Valve", Genre = "Action", PeakPlayers = 620408, Price = 0.00M, ReleaseDate = DateTime.Parse("8/21/2012"), ReviewScore = "Very Positive"},
+                new Game {Name = "Dota 2", Developer = "Valve", Genre = "Action", PeakPlayers = 840712, Price = 0.00M, ReleaseDate = DateTime.Parse("7/9/2013"), ReviewScore = "Very Positive"},
+                new Game {Name = "PLAYERUNKNOWN'S BATTLEGROUNDS", Developer = "PUBG Corporation", Genre = "Action", PeakPlayers = 935918, Price = 29.99M, ReleaseDate = DateTime.Parse("12/21/2017"), ReviewScore = "Mixed"},
+                new Game {Name = "Tom Clancy's Rainbow Six Siege", Developer = "Ubisoft", Genre = "Action", PeakPlayers = 137686, Price = 39.99M, ReleaseDate = DateTime.Parse("12/1/2015"), ReviewScore = "Very Positive"},
+                new Game {Name = "Grand Theft Auto V", Developer = "Rockstar Games", Genre = "Action", PeakPlayers = 89756, Price = 29.99M, ReleaseDate = DateTime.Parse("4/14/2015"), ReviewScore = "Mixed"},
+                new Game {Name = "RESIDENT EVIL 2 / BIOHAZARD RE:2", Developer = "CAPCOM Co., Ltd.", Genre = "Action", PeakPlayers = 74241, Price = 59.99M, ReleaseDate = DateTime.Parse("1/24/2019"), ReviewScore = "Overwhelmingly Positive"},
+                new Game {Name = "Warframe", Developer = "Digital Extremes", Genre = "Action", PeakPlayers = 79181, Price = 0.0M, ReleaseDate = DateTime.Parse("3/25/2013"), ReviewScore = "Very Positive"},
+                new Game {Name = "Rust", Developer = "Facepunch Studios", Genre = "Action", PeakPlayers = 64788, Price = 34.99M, ReleaseDate = DateTime.Parse("2/8/2018"), ReviewScore = "Very Positive"},
+                new Game {Name = "Football Manager 2019", Developer = "Sports Interactive", Genre = "Simulation", PeakPlayers = 64139, Price = 49.99M, ReleaseDate = DateTime.Parse("11/2/2018"), ReviewScore = "Mostly Positive"},
+                new Game {Name = "Team Fortress 2", Developer = "Valve", Genre = "Action", PeakPlayers = 62806, Price = 0.00M, ReleaseDate = DateTime.Parse("10/10/2007"), ReviewScore = "Very Positive"},
+                new Game {Name = "MONSTER HUNTER: WORLD", Developer = "CAPCOM Co., Ltd.", Genre = "Action", PeakPlayers = 94455, Price = 59.99M, ReleaseDate = DateTime.Parse("8/9/2018"), ReviewScore = "Mixed"},
+                new Game {Name = "Rocket League", Developer = "Psyonix, Inc.", Genre = "Racing", PeakPlayers = 55813, Price = 19.99M, ReleaseDate = DateTime.Parse("7/7/2015"), ReviewScore = "Very Positive"},
+                new Game {Name = "Garry's Mod", Developer = "Facepunch Studios", Genre = "Simulation", PeakPlayers = 51230, Price = 9.99M, ReleaseDate = DateTime.Parse("11/29/2006"), ReviewScore = "Overwhelmingly Positive"},
+                new Game {Name = "ARK: Survival Evolved", Developer = "Studio Wildcard", Genre = "Action", PeakPlayers = 51005, Price = 49.99M, ReleaseDate = DateTime.Parse("8/27/2017"), ReviewScore = "Mixed"},
+                new Game {Name = "Path of Exile", Developer = "Grinding Gear Games", Genre = "Action", PeakPlayers = 39222, Price = 0.00M, ReleaseDate = DateTime.Parse("10/23/2013"), ReviewScore = "Very Positive"},
+                new Game {Name = "Sid Meier's Civilization VI", Developer = "Firaxis Games", Genre = "Strategy", PeakPlayers = 38246, Price = 59.99M, ReleaseDate = DateTime.Parse("10/20/2016"), ReviewScore = "Mixed"},
+                new Game {Name = "Terraria", Developer = "Re-Logic", Genre = "Action", PeakPlayers = 36420, Price = 9.99M, ReleaseDate = DateTime.Parse("5/16/2011"), ReviewScore = "Overwhelmingly Positive"},
+                new Game {Name = "Sid Meier's Civilization V", Developer = "Firaxis Games", Genre = "Strategy", PeakPlayers = 35982, Price = 29.99M, ReleaseDate = DateTime.Parse("9/21/2010"), ReviewScore = "Overwhelmingly Positive"},
+                new Game {Name = "Euro Truck Simulator 2", Developer = "SCS Software", Genre = "Simulation", PeakPlayers = 35153, Price = 19.99M, ReleaseDate = DateTime.Parse("10/12/2012"), ReviewScore = "Overwhelmingly Positive"},
+                new Game {Name = "Ring of Elysium", Developer = "Aurora Software", Genre = "Action", PeakPlayers = 43183, Price = 0.00M, ReleaseDate = DateTime.Parse("9/19/2018"), ReviewScore = "Mostly Positive"},
+            };
+
+
+            // Question 1: Select the first game in the list.
+            // What is the exact data type of this query result? Put your answer in README.md
+
+
+            //Q1
+            Console.WriteLine();
+            Console.WriteLine("Q1 -------------------------------------");
+            var firstGame = games.First();
+            Console.WriteLine(firstGame);
+            //end Q1
+
+
+            
+            Console.WriteLine();
+            Console.WriteLine("Q2 -------------------------------------");
+            //Q2
+            var firstThreeGames = games.Take(3);
+           foreach (var m in firstThreeGames)
+           {
+               Console.WriteLine(m);
+           }//end Q2
+
+
+
+           //Q3
+            Console.WriteLine();
+            Console.WriteLine("Q3 -------------------------------------");
+           var afterFourGames = games.Skip(4).Take(3);
+           foreach (var m in afterFourGames)
+           {
+               Console.WriteLine(m);
+           }//end Q3
+
+
+
+           //Q4
+            Console.WriteLine();
+            Console.WriteLine("Q4 -------------------------------------");
+
+            var query4 = games.Where(m => m.PeakPlayers > 100000);
+
+            foreach (var m in query4)
+            {
+                Console.WriteLine(m);
+            } //end Q4
+
+
+
+            //Q5
+            Console.WriteLine();
+            Console.WriteLine("Q5 -------------------------------------");
+
+            var query5 = games.Where(m => m.PeakPlayers > 100000).Where(m => m.ReleaseDate < DateTime.Parse("1/1/2006"));
+
+            foreach (var m in query5)
+            {
+                Console.WriteLine(m);
+            }//end Q5
+
+
+
+
+            //Q6
+            Console.WriteLine();
+            Console.WriteLine("Q6 -------------------------------------");
+
+            var query6 = games.Where(m => m.ReleaseDate < DateTime.Parse("1/1/2006")).FirstOrDefault();
+
+            if (query6 == null)
+            {
+                Console.WriteLine("No top 20 games released before 1/1/2006");
+            }//end Q6
+
+
+
+
+
+            //Q7
+            Console.WriteLine();
+            Console.WriteLine("Q7 -------------------------------------");
+            try
+            {
+                 var query7 = games.Where(m => m.ReleaseDate < DateTime.Parse("1/1/2006")).First();
+            }
+            catch
+            { 
+                Console.WriteLine("No Results");
+            }//end Q7
+
+
+
+
+            //Q8
+            Console.WriteLine();
+            Console.WriteLine("Q8 -------------------------------------");
+            var query8 = games.Where(m => m.Name == "Rust").Single();
+
+            if (query8 == null)
+            {
+                Console.WriteLine("There is no game by that name.");
+            }
+            else
+            {
+                Console.WriteLine("The game Rust has been detected.");
+            }//end Q8
+
+
+
+
+            //Q9
+            Console.WriteLine();
+            Console.WriteLine("Q9 -------------------------------------");
+
+            var query9QS = from m in games
+                           orderby m.ReleaseDate
+                           select m;
+
+            var query9 = games.OrderBy(m => m.ReleaseDate);
+
+            foreach(var m in query9)
+            {
+                Console.WriteLine(m);
+            }//end Q9
+
+
+
+
+
+
+            //Q10
+
+            Console.WriteLine();
+            Console.WriteLine("Q10 -------------------------------------");
+
+            var query10QS = from m in games
+                            orderby m.Name, m.ReleaseDate
+                            select m;
+
+            var query10 = games.OrderBy(m => m.Name).ThenBy(m => m.ReleaseDate);
+
+            foreach (var m in query10QS)
+            {
+                Console.WriteLine(m);
+            }//end Q10
+
+
+
+
+            //Q11
+
+            Console.WriteLine();
+            Console.WriteLine("Q11 -------------------------------------");
+
+            var query11 = games.Where(m => m.Price == 0.00M).Select(m => m.Name);
+            var query11QS = from m in games
+                            where m.Price == 0.00M
+                            select m.Name;
+
+            foreach (var m in query11)
+            {
+                Console.WriteLine(m);
+            }//end Q11
+
+
+
+
+
+            //Q12
+            Console.WriteLine();
+            Console.WriteLine("Q12 -------------------------------------");
+
+            var query12 = games.Where(m => m.Price == 0.00M).Select(m => new {m.Name, m.PeakPlayers});
+
+            var query12QS = from m in games
+                            where m.Price == 0.00M
+                            select new {m.Name, m.PeakPlayers};
+
+            foreach (var m in query12)
+            {
+                Console.WriteLine($"{m.Name} {m.PeakPlayers:N0}");
+            }
+            
+            /*The reason we cannot use our ToString() method is because the TwoString() method has only the ability to list the specified parameters within it. IE Name, Genre,
+            PeakPlayers. Because of this, we must use projection to return only the data we wish to use.*/
+            
+            //end Q12
+
+
+
+
+
+            //Q13
+            Console.WriteLine();
+            Console.WriteLine("Q13 -------------------------------------");
+            var groupByQuery = games.GroupBy(m => m.Developer);
+
+            foreach (var group in groupByQuery)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"{group.Key} -- {group.Count()} game(s)");
+                foreach (var m in group)
+                {
+                    Console.WriteLine(m);
+                }
+            }//end Q13
+
+
+
+
+
+            //Q14
+            Console.WriteLine();
+            Console.WriteLine("Q14 -------------------------------------");
+
+            var query14 = games.Where(m => m.PeakPlayers == games.Max(m => m.PeakPlayers));
+
+            foreach (var m in query14)
+            {
+                Console.WriteLine(m);
+            }//end Q14
+
+
+
+
+
+
+            //Q15
+
+            Console.WriteLine();
+            Console.WriteLine("Q15 -------------------------------------");
+
+            var query15Av = games.Average(m => m.PeakPlayers);
+            Console.WriteLine($"The average amount of peak players for these games is: {query15Av} --------");
+
+            var query15Fin = games.Where(m => m.PeakPlayers < query15Av).OrderByDescending(m => m.PeakPlayers);
+
+            foreach (var m in query15Fin)
+            {
+                Console.WriteLine(m);
+            }//end Q15
+            
+
+            
+        }
+    }
+}
